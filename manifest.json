@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Open Read",
+    "version": "0.1",
+    "description": "Read artical and blogs without signup",
+    "permissions": [
+      "tabs"
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/icon16.png"
+      }
+    }
+  }
+  
