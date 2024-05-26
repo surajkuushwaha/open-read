@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Open Read",
     "version": "0.1",
-    "description": "Read artical and blogs without signup",
+    "description": "Read article and blogs without sign-up",
     "permissions": [
       "tabs"
     ],
