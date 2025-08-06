@@ -1,0 +1,30 @@
+{
+  "name": "open-read-plasmo",
+  "displayName": "Open Read",
+  "version": "0.1.0",
+  "description": "Read article and blogs without sign-up",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.1",
+    "@types/node": "^24.2.0",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "plasmo": "^0.90.5",
+    "typescript": "^5.9.2"
+  },
+  "manifest": {
+    "permissions": [
+      "tabs"
+    ]
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
