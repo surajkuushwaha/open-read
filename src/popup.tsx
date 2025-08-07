@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import "./popup.css"
 
 import archiveIsLogo from "data-base64:../assets/images/website-logos/archive.is.svg"
@@ -49,6 +49,20 @@ function isValidHttpUrl(string: string): boolean {
   }
 }
 
+function isUrlFromPlatform(currentUrl: string, platform: typeof PLATFORMS[0]): boolean {
+  if (!currentUrl) return false
+  
+  try {
+    const url = new URL(currentUrl)
+    const platformUrl = new URL(platform.url)
+    
+    // Check if the current URL's hostname matches or is a subdomain of the platform
+    return url.hostname === platformUrl.hostname || url.hostname.endsWith('.' + platformUrl.hostname)
+  } catch {
+    return false
+  }
+}
+
 async function openTab(platform: typeof PLATFORMS[0]) {
   const tabs = await chrome.tabs.query({ active: true, currentWindow: true })
   const currentTabURL = tabs[0].url
@@ -59,29 +73,53 @@ async function openTab(platform: typeof PLATFORMS[0]) {
 }
 
 function Popup() {
+  const [currentTabURL, setCurrentTabURL] = useState<string | null>(null)
+
+  useEffect(() => {
+    const getCurrentTab = async () => {
+      try {
+        const tabs = await chrome.tabs.query({ active: true, currentWindow: true })
+        setCurrentTabURL(tabs[0]?.url || null)
+      } catch (error) {
+        console.error('Error getting current tab:', error)
+      }
+    }
+    
+    getCurrentTab()
+  }, [])
+
   const handleButtonClick = (platform: typeof PLATFORMS[0]) => {
     openTab(platform)
   }
 
+  const isCurrentUrlFromAnyPlatform = (): boolean => {
+    if (!currentTabURL) return false
+    return PLATFORMS.some(platform => isUrlFromPlatform(currentTabURL, platform))
+  }
+
   return (
     <div className="container">
-      {PLATFORMS.map((platform) => (
-        <button
-          key={platform.id}
-          className="button"
-          onClick={() => handleButtonClick(platform)}
-        >
-          <img
-            alt={`${platform.name} logo`}
-            loading="lazy"
-            width="20"
-            height="20"
-            decoding="async"
-            src={platform.logo}
-          />
-          <span>{platform.name}</span>
-        </button>
-      ))}
+      {PLATFORMS.map((platform) => {
+        const disabled = isCurrentUrlFromAnyPlatform()
+        return (
+          <button
+            key={platform.id}
+            className={`button ${disabled ? 'disabled' : ''}`}
+            onClick={() => !disabled && handleButtonClick(platform)}
+            disabled={disabled}
+          >
+            <img
+              alt={`${platform.name} logo`}
+              loading="lazy"
+              width="20"
+              height="20"
+              decoding="async"
+              src={platform.logo}
+            />
+            <span>{platform.name}</span>
+          </button>
+        )
+      })}
     </div>
   )
 }

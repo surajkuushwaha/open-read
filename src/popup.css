@@ -48,3 +48,13 @@ body {
   flex: 1;
   text-align: left;
 }
+
+.button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #1c2128;
+}
+
+.button.disabled:hover {
+  background-color: #1c2128;
+}
