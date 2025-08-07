@@ -1,11 +1,11 @@
 import React from "react"
 import "./popup.css"
 
-import archiveIsLogo from "data-base64:~assets/website-logos/archive.is.svg"
-import archiveOrgLogo from "data-base64:~assets/website-logos/archive.org.svg"
-import removepaywallLogo from "data-base64:~assets/website-logos/removepaywall.com.svg"
-import ft12Logo from "data-base64:~assets/website-logos/12ft.io.svg"
-import googleLogo from "data-base64:~assets/website-logos/google.svg"
+import archiveIsLogo from "data-base64:../assets/images/website-logos/archive.is.svg"
+import archiveOrgLogo from "data-base64:../assets/images/website-logos/archive.org.svg"
+import removepaywallLogo from "data-base64:../assets/images/website-logos/removepaywall.com.svg"
+import ft12Logo from "data-base64:../assets/images/website-logos/12ft.io.svg"
+import googleLogo from "data-base64:../assets/images/website-logos/google.svg"
 
 const PLATFORMS = [
   {
