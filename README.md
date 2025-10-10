@@ -12,101 +12,35 @@ A browser extension that allows you to easily access archived versions of web pa
 
 ## Development
 
-This extension is built using [Plasmo](https://www.plasmo.com/), which enables cross-browser compatibility.
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm
+Built using [Plasmo](https://www.plasmo.com/) for cross-browser compatibility.
 
 ### Setup
 
 ```bash
 npm install
-```
-
-### Development
-
-```bash
 npm run dev
 ```
 
-This will start the development server and watch for changes.
-
 ### Building
 
-Build for Chrome (Manifest V3):
 ```bash
+# Chrome (Manifest V3)
 npm run build
-```
 
-Build for Firefox (Manifest V2):
-```bash
+# Firefox (Manifest V2)
 npm run build -- --target=firefox-mv2
-```
 
-Build for Safari:
-```bash
+# Safari
 npm run build -- --target=safari
 ```
-
-Build for all browsers:
-```bash
-npm run build -- --target=chrome-mv3
-npm run build -- --target=firefox-mv2
-npm run build -- --target=safari
-```
-
-### Build Outputs
-
-After building, you'll find the extension files in the `build/` directory:
-
-- `build/chrome-mv3-prod/` - Chrome extension
-- `build/firefox-mv2-prod/` - Firefox extension  
-- `build/safari-prod/` - Safari extension
 
 ### Installation
 
-#### Chrome
-1. Open Chrome and navigate to `chrome://extensions/`
-2. Enable "Developer mode"
-3. Click "Load unpacked" and select the `build/chrome-mv3-prod/` folder
+**Chrome:** Load unpacked extension from `build/chrome-mv3-prod/` at `chrome://extensions/`
 
-#### Firefox
-1. Open Firefox and navigate to `about:debugging`
-2. Click "This Firefox"
-3. Click "Load Temporary Add-on"
-4. Select the `manifest.json` file from `build/firefox-mv2-prod/`
+**Firefox:** Load temporary add-on from `build/firefox-mv2-prod/` at `about:debugging`
 
-#### Safari
-1. Use the Safari extension from `build/safari-prod/`
-2. Follow Safari's extension installation process
-
-## Packaging
-
-To create distributable packages:
-
-```bash
-npm run package
-```
-
-This will create zip files for each browser in the `build/` directory.
-
-## Technologies Used
-
-- [Plasmo](https://www.plasmo.com/) - Browser extension framework
-- React - UI framework
-- TypeScript - Type-safe JavaScript
-- CSS - Styling
-
-## Migration from Original Chrome Extension
-
-This project is a cross-browser port of the original Chrome-only extension. The key changes include:
-
-1. **Framework**: Migrated from vanilla JavaScript to Plasmo + React
-2. **Cross-browser Support**: Added support for Firefox, Safari, and Edge
-3. **Modern Development**: Added TypeScript, proper build system, and hot reloading
-4. **Manifest**: Automatic manifest generation for different browser versions
+**Safari:** Use extension from `build/safari-prod/`
 
 ## License
 
