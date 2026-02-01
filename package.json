@@ -6,9 +6,16 @@
   "author": "",
   "license": "ISC",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "plasmo dev",
+    "dev:firefox": "plasmo dev --target=firefox-mv2",
+    "dev:safari": "plasmo dev --target=safari",
     "build": "plasmo build",
-    "package": "plasmo package"
+    "build:firefox": "plasmo build --target=firefox-mv2",
+    "build:safari": "plasmo build --target=safari",
+    "package": "plasmo package",
+    "package:firefox": "plasmo package --target=firefox-mv2",
+    "package:safari": "plasmo package --target=safari"
   },
   "devDependencies": {
     "@types/chrome": "^0.1.1",
